@@ -14,7 +14,7 @@ module.exports = (options = {}, plugins) => {
   delete options.includes;
 
   return Object.assign(options, {
-    plugins: [
+    plugins: (options.plugins || []).concat([
       plugins.resolve({
         module: true, // Default: true
 
@@ -37,7 +37,7 @@ module.exports = (options = {}, plugins) => {
       }),
       plugins.typescript({
       }),
-    ].concat(options.plugins || []),
+    ]),
   });
 };
 
